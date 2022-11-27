@@ -1,0 +1,356 @@
+@import url("http://www.microsoft.com/typography/fonts/default.aspx");
+body {
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
+
+img {
+  pointer-events: none;
+}
+div {
+  display: block;
+}
+#app {
+  margin:  auto;  
+}
+#container {
+  max-width: 1519px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+}
+#container-header {
+  max-width: 1519px;
+  margin: 0 auto;
+}
+/* navbar */
+#header {
+  position: static;
+  min-width: 1519px;
+  background: #000000;
+}
+#navbar-main{
+  margin-left: 400px;
+}
+#header-content {
+  display: flex;
+  align-items:center;
+  padding: 20px;
+  max-width: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+#navbar {
+  display: flex;
+  align-items: center;
+}
+
+#navbar li {
+  list-style: none;
+  padding: 0 20px;
+  position: relative;
+}
+
+#navbar li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  transition: 0.3s ease;
+}
+#navbar ul li button {
+  font-size: 20px;
+  color: white;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#navbar li button {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: antiquewhite;
+  background-color: #222;
+  transition: 0.3s ease;
+}
+#navbar li a:hover,
+#navbar li a.active,
+#navbar li button:hover {
+  color: antiquewhite;
+}
+#navbar li a.active::after,
+#navbar li a:hover::after,
+#navbar li button:hover::after {
+  content: "";
+  width: 30%;
+  height: 2px;
+  background-color: antiquewhite;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+}
+
+#close {
+  display: none;
+}
+/* main-form */
+.main_form {
+  margin-top: 30px;
+  display: flex;
+
+}
+/* t-shirt_layout */
+
+.t-shirt {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+}
+.t-shirt-img {
+  width: 640px;
+  height: 640px;
+}
+.t-shirt_layout {
+  display: inline-flex;
+  overflow: visible;
+}
+
+.left-arrow-img {
+  height: 230px;
+  width: 210px;
+}
+
+.right-arrow-img {
+  height: 230px;
+  width: 210px;
+}
+.selected_sketch_for_clothes {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  margin-left: 170px;
+  margin-top: 170px;
+}
+/* sketch-category */
+
+.sketch-category {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 23px;
+  width: 500px;
+  height: 550px;
+}
+
+.list_item {
+  margin-bottom: 5px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 10px;
+  font-size: 18px;
+  height: 50px;
+  width: 130px;
+  border-style: solid;
+  border-color: black;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.list_item:hover {
+  background-color: antiquewhite;
+}
+
+/* secondary_layout */
+
+.secondary_layout {
+  margin-top: 20px;
+  display: flex;
+ 
+}
+
+/* first_choice */
+
+.first_choice {
+  width: auto;
+  margin-left: 145px;
+}
+.select_sketch {
+  display: flex;
+  align-items: center;
+}
+.select_sketch img {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+.button_create_t-shirt {
+  font-size: 36px;
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
+  color: black;
+  border-style: solid;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 15px;
+  margin-top: 30px;
+  background-color: #fff;
+  margin-left: 280px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.button_create_t-shirt:hover {
+  background-color: antiquewhite;
+}
+/* select_parametrs */
+
+.select_parametrs {
+  margin-left: 90px;
+  width: 600px;
+}
+
+/* choise_color */
+.selected_color {
+  width: 150px;
+
+  height: 150px;
+  border-radius: 90px;
+  border-width: 2px;
+  background-color: blue;
+  border-color: black;
+  border-style: solid;
+}
+
+.list_colors {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-left: 30px;
+  width: 300px;
+}
+.list_colors div {
+  width: 80px;
+  height: 50px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-size: 22px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: width 0.3s;
+}
+.list_colors div:hover {
+  width: 90px;
+  height: 60px;
+  box-shadow: 0px 0px 10px;
+}
+.choise_color {
+  display: flex;
+}
+
+/* choise_size */
+.list_size {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.list_size div {
+  width: 80px;
+  height: 50px;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-size: 22px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.list_size div:hover {
+  background-color: antiquewhite;
+}
+
+.size_clothes {
+  margin-top: 30px;
+  font-size: 26px;
+  padding-left: 35px;
+  margin-right: 70px;
+}
+.selected_size {
+  width: 150px;
+  height: 50px;
+  border-color: black;
+  border-style: solid;
+  background-color: #fff;
+  border-radius: 15px;
+  text-align: center;
+  border-width: 2px;
+  font-size: 20px;
+  line-height: 50px;
+  margin-top: 10px;
+}
+
+.choise_size {
+  display: flex;
+  margin-top: 20px;
+  height: 200px;
+}
+/* footer */
+#footer{
+  margin-top: 100px;
+  position: static;
+  min-width: 1519px;
+  background: #000000; 
+}
+#container-footer {
+  max-width: 1519px;
+  margin: 0 auto;
+}
+.section-p1{
+  color: antiquewhite;
+  padding: 40px 80px;
+  font-size: 18px;
+  }
+  footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+footer .col{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+footer .logo{
+    margin-bottom: 30px;
+}
+footer h4{
+    padding-bottom: 20px;
+}
+footer p{
+    margin: 0 0 8px 0;
+}
+footer a{
+    text-decoration: none;
+    color: antiquewhite;
+    margin-bottom: 10px;
+}
+footer .follow{
+    margin-top: 20px;
+}
+footer .follow i{
+    color:white;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .follow i:hover,
+footer a:hover{
+    color: #088178;
+}
+
+footer .copyright{
+    width: 100%;
+    text-align: center;
+}
