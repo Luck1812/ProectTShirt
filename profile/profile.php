@@ -50,12 +50,12 @@
                             </tr>
                             <tr>
                                 <td class="no-border" colspan="2" />
-                                <td><button style="visibility:hidden;" :class="{ visibleObject : roleID == 1 }" @click="addWindowCatalog();">Добавить каталог</button></td>
+                                <td style="display:none;" :class="{ visibleObject : roleID == 1 }"><button  @click="addWindowCatalog();">Добавить каталог</button></td>
         
                             </tr>
                             <tr>
                                 <td class="no-border" colspan="4" />
-                                <td><button style="visibility:hidden;" :class="{ visibleObject : roleID == 1 }" @click="addWindowCatalogImage();">Добавить изображение </button></td>
+                                <td style="display:none;" :class="{ visibleObject : roleID == 1 }"><button  @click="addWindowCatalogImage();">Добавить изображение </button></td>
                             </tr>
                             <tr>
                                 <td style="height:200px" class="no-border" colspan="6" />
@@ -131,7 +131,7 @@
         }
 
         .visibleObject {
-            visibility: visible !important;
+            display: block !important;
         }
     </style>
     <?php include('../footer/footer.php'); ?>

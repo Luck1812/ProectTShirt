@@ -39,11 +39,16 @@
                             </thead>
 
                             <tbody>
-                                <tr @click="openMoreInformation" :id="order.Number-1" class="order" style="height:10px;" v-for="order in createOrders">
-                                    <td class="td-order">{{order.Number}}</td>
-                                    <td class="td-order">{{order.NameImage}}</td>
-                                    <td class="td-order">{{order.Date}}</td>
-                                    <td class="td-order">{{order.NameStatus}}</td>
+                                <tr class="order" style="height:10px;" v-for="order in createOrders">
+                                    <td @click="openMoreInformation" :id="order.Number-1" class="td-order">{{order.Number}}</td>
+                                    <td @click="openMoreInformation" :id="order.Number-1" class="td-order">{{order.NameImage}}</td>
+                                    <td @click="openMoreInformation" :id="order.Number-1" class="td-order">{{order.Date}}</td>
+                                    <td class="td-order" v-if="RoleID == 1">
+                                        <select @change="changeStatus($event);" :id="order.NumberElectronicReceipt" style="width: 150px; font-size:20px; background-color:antiquewhite">
+                                            <option v-for="status in createStatus" :value="status.StatusID" :selected="status.StatusID == order.StatusID"> {{status.StatusName}}</option>
+                                        </select>
+                                    </td>
+                                    <td v-else="RoleID ==" @click="openMoreInformation" :id="order.Number-1" class="td-order">{{order.NameStatus}}</td>
                                 </tr>
                                 <tr style="height:auto"></tr>
                             </tbody>
@@ -164,6 +169,7 @@
             NumberSort: "№ ↓",
             NameSketch: "",
             CostProduct: "",
+            RoleID: "",
             selectStatus: "",
             CountProduct: "",
             TotalCost: "",
@@ -174,6 +180,24 @@
             this.startOrders();
         },
         methods: {
+            changeStatus(event) {
+                let add = $.ajax({
+                    url: '../mainCode.php',
+                    dataType: 'html',
+                    method: 'get',
+                    data: {
+                        func_user: 'changeStatus',
+                        'NumberElectronicReceipt': event.target.id,
+                        'StatusID': event.target.value,
+                    },
+                    success: function(data) {
+                        alert("Изменение статуса");
+                    },
+                    error: function() {
+                        console.log('ERROR');
+                    }
+                });
+            },
             sortOrders() {
                 if (this.isSort) {
                     this.NumberSort = "№ ↓";
@@ -242,7 +266,7 @@
                     $connection = mysqli_connect('localhost', 'root', '', 'tshirt');
                     $result = $connection->query("SELECT `ID` FROM `user` WHERE `RegistrationUserID` = '$userID'"); // запрос на выборку
                     while ($row = $result->fetch_assoc()) {
-                        $result2 = $connection->query("SELECT `sketch_image`.`ID` as `ArticleSketch`,`RoleID`, `NumberElectronicReceipt`,`Date`,`top_clothes`.`Name`, `UserID`,`PostalCode`,`TopClothesID`,`SizeID`,`NameStatus`,`SketchImageID`,`top_clothes`.`Cost`,`StatusID`, `category_image`.`Name` as `NameSketch` FROM `electronic_receipt`,`top_clothes`, `status`, `user`, `category_image`, `sketch_image` WHERE `electronic_receipt`.`SketchImageID` = `sketch_image`.`ID` AND `sketch_image`.`CategoryImageID` = `category_image`.`ID` AND `top_clothes`.`ID` = `electronic_receipt`.`TopClothesID` AND `user`.`ID` = `electronic_receipt`.`UserID` AND `status`.`ID` = `electronic_receipt`.`StatusID` AND `UserID` = '$row[ID]';"); // запрос на выборку
+                        $result2 = $connection->query("SELECT `sketch_image`.`ID` as `ArticleSketch`,`RoleID`, `NumberElectronicReceipt`,`Date`,`top_clothes`.`Name`, `UserID`,`PostalCode`,`TopClothesID`,`SizeID`,`NameStatus`,`SketchImageID`,`top_clothes`.`Cost`,`StatusID`, `category_image`.`Name` as `NameSketch` FROM `electronic_receipt`,`top_clothes`, `status`, `user`, `category_image`, `sketch_image` WHERE `electronic_receipt`.`SketchImageID` = `sketch_image`.`ID` AND `sketch_image`.`CategoryImageID` = `category_image`.`ID` AND `top_clothes`.`ID` = `electronic_receipt`.`TopClothesID` AND `user`.`ID` = `electronic_receipt`.`UserID` AND `status`.`ID` = `electronic_receipt`.`StatusID`;"); // запрос на выборку
                     }
                     $array3 = array();
                     $count = 1;
@@ -270,6 +294,7 @@
                 ?>
                 this.mainArrayOrders = '<?php echo json_encode($array3); ?>';
                 this.mainArrayOrders = $.parseJSON(this.mainArrayOrders);
+                this.RoleID = this.getCookie('roleID');
                 <?php
                 $connection = mysqli_connect('localhost', 'root', '', 'tshirt');
                 $result = $connection->query("SELECT * FROM `status`");
@@ -283,7 +308,11 @@
                 ?>
                 this.arrayStatus = '<?php echo json_encode($array3); ?>';
                 this.arrayStatus = $.parseJSON(this.arrayStatus);
-            }
+            },
+            getCookie(name) {
+                var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+                return matches ? decodeURIComponent(matches[1]) : undefined;
+            },
         },
         computed: {
             createOrders() {

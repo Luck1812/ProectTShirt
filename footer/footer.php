@@ -20,15 +20,14 @@
                 </div>
                 <div class="col">
                     <h4>О нас</h4>
-                    <a href="#">Информция о нас</a>
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="">Контакты</a>
+                    <a href="../about/about.php">Информция о нас</a>
+                    <a href="https://www.consultant.ru/document/cons_doc_LAW_10699/51c53d82b60ac8c009745bdea3838d507064c6d3/">Политика конфиденциальности</a>
+                    <a href="../contact/contact.php">Контакты</a>
                 </div>
                 <div class="col">
-                    <h4>Мой аккаунт</h4>
-                    <a href="#">Аккаунт</a>
-                    <a href="#">Профиль </a>
-                    <a href="#">Мои заказы</a>
+                    <h4>Заказ</h4>
+                    <a href="../choice-t-shirt/choice-t-shirt.php">Создать заказ</a>
+                    <a href="../my-orders/my-orders.php">Мои заказы</a>
                 </div>
                 <div class="copyright">
                     <p> 2022, Project - html css T-shirt</p>

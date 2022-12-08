@@ -15,9 +15,10 @@
             <li><a @click="logined_user();" href="../about/about.php">О нас</a></li>
             <li><a @click="logined_user();" href="../contact/contact.php">Контакты</a></li>
             <li><a href="../my-orders/my-orders.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Мои заказы</a></li>
+            <li style="display:none" :class="{ visible__object: isAdmin }"><a href="../all-orders/all-orders.php"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Все заказы</a></li>
             <a href="#" id="close"><i></i></a>
-            <li><a href="#" :class="{ hidden__object: isActiveAccount }" @click="isActiveEntry = true">Вход</a></li>
-            <li><a style="visibility:hidden" :class="{ visible__object: isActiveAccount }" href="../profile/profile.php">Аккаунт</a></li>
+            <li :class="{ hidden__object: isActiveAccount }"><a href="#" @click="isActiveEntry = true">Вход</a></li>
+            <li style="display:none" :class="{ visible__object: isActiveAccount }"><a href="../profile/profile.php">Аккаунт</a></li>
           </ul>
         </div>
       </div>
@@ -73,6 +74,7 @@
       entryEMailField: "",
       entryPasswordField: "",
       isEntry: "",
+      isAdmin: false,
     },
     created() {
       this.logined_user();
@@ -80,8 +82,9 @@
     methods: {
       async logined_user() {
         var containEmail = this.getCookie('email');
-        if(containEmail != undefined)
-        {
+        if (this.getCookie('roleID') == 1)
+          this.isAdmin = true;
+        if (containEmail != undefined) {
           this.isActiveAccount = true;
           this.isActiveEntry = false;
         }

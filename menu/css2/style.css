@@ -18,10 +18,10 @@
   overflow: hidden;
 }
 .visible__object{
-  visibility: visible !important;
+  display: block !important;
 }
 .hidden__object{
-  visibility: hidden !important;
+  display: none !important;
 }
 .header__button {
   cursor: pointer;

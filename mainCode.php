@@ -14,7 +14,7 @@ if (!empty($_FILES['file'])) {
     $p = addslashes(file_get_contents($tmpN));
     $connection = mysqli_connect('localhost', 'root', '', 'tshirt');
     $result = $connection->query("SELECT MAX(`ID`) as `ID` FROM `category_image`;");
-    while($row = $result->fetch_array(MYSQLI_ASSOC)){
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $sql = "INSERT INTO `sketch_image` (`ID`, `Image`, `CategoryImageID`) VALUES (NULL,'$p', '$row[ID]');";
     }
     $massive = mysqli_query($connection, $sql);
@@ -54,22 +54,25 @@ if ($func === 'func_add_user') {
     $arr['email'] = $_GET['email'];
     $arr['pass'] = $_GET['pass'];
     $connection = mysqli_connect('localhost', 'root', '', 'tshirt');
-    $sql = "SELECT * FROM `registration_user` WHERE `E-mail` = '$arr[email]' and `Password` = '$arr[pass]';";
-    $massive = mysqli_query($connection, $sql);
-    $row = mysqli_fetch_array($massive, MYSQLI_NUM);
-    foreach ($massive as $value) {
-        if (is_array($value)) {
-            setcookie("email", $arr['email']);
-            setcookie("password", $arr['pass']);
-            setcookie("userID", $row[0]);
+    $proverka = 0;
+    $result = $connection->query("SELECT `registration_user`.`ID`, `E-mail`, `Password`, `RoleID` FROM `user`, `registration_user` WHERE `user`.`RegistrationUserID` = `registration_user`.`ID` AND `registration_user`.`E-mail` = '$arr[email]' AND `registration_user`.`Password` = '$arr[pass]';");
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        if(count($row) >= 1)
+        {
+            setcookie("email", $row['E-mail']);
+            setcookie("password", $row['Password']);
+            setcookie("roleID", $row['RoleID']);
+            setcookie("userID", $row['ID']);
+            $proverka = 1;
         }
-        echo is_array($value);
     }
     mysqli_close($connection);
+    echo $proverka;
 } else if ($func === 'clear_cookie') {
     setcookie("email", "");
     setcookie("password", "");
     setcookie("userID", "");
+    setcookie("roleID", "");
 } else if ($func === 'change_data') {
     $arr['name'] = $_GET['name'];
     $arr['surname'] = $_GET['surname'];
@@ -169,4 +172,10 @@ if ($func === 'func_add_user') {
     $document->setValue('TotalCost', $TotalCost);
 
     $document->saveAs($outputFile);
+} else if ($func === 'changeStatus') {
+    $arr['NumberElectronicReceipt'] = $_GET['NumberElectronicReceipt'];
+    $arr['StatusID'] = $_GET['StatusID'];
+    $connection = mysqli_connect('localhost', 'root', '', 'tshirt');
+    $sql = "UPDATE `electronic_receipt` SET `StatusID` = '$arr[StatusID]' WHERE `electronic_receipt`.`NumberElectronicReceipt` = '$arr[NumberElectronicReceipt]';";
+    $massive = mysqli_query($connection, $sql);
 }
