@@ -1,0 +1,66 @@
+@import url("http://www.microsoft.com/typography/fonts/default.aspx");
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+/* footer */
+#app_footer{
+  font-family: 'Abril Fatface', cursive !important; 
+}
+#footer {
+  margin-top: 100px;
+  position: static;
+  min-width: 1519px;
+  background: #000000;
+}
+#container-footer {
+  max-width: 1519px;
+  margin: 0 auto;
+}
+.section-footer-p1 {
+  color: antiquewhite;
+  padding: 40px 80px;
+  font-size: 18px;
+}
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+footer .col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+footer .logo {
+  margin-bottom: 30px;
+}
+footer h4 {
+  color: antiquewhite;
+  padding-bottom: 20px;
+}
+footer p {
+  color: antiquewhite;
+  margin: 0 0 8px 0;
+}
+footer a {
+  text-decoration: none;
+  color: antiquewhite;
+  margin-bottom: 10px;
+}
+footer .follow {
+  margin-top: 20px;
+}
+footer .follow i {
+  color: white;
+  padding-right: 4px;
+  cursor: pointer;
+}
+
+footer .follow i:hover,
+footer a:hover {
+  color: #088178;
+}
+
+footer .copyright {
+  width: 100%;
+  text-align: center;
+}

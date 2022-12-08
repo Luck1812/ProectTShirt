@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+#app_menu a{
+  font-family: 'Abril Fatface', cursive !important; 
+}
+#container-header {
+  max-width: 1519px;
+  margin: 0 auto;
+}
+#header-content {
+  display: flex;
+  align-items:center;
+  max-width: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+/* navbar */
+#header {
+  position: static;
+  min-width: 1519px;
+  background: #000000;
+}
+
+#navbar-main {
+  margin-left: 400px;
+}
+#navbar {
+  display: flex;
+  align-items: center;
+}
+
+#navbar li {
+  list-style: none;
+  padding: 0 20px;
+  position: relative;
+}
+
+#navbar li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  transition: 0.3s ease;
+}
+#navbar ul li button {
+  font-size: 20px;
+  color: white;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#navbar li button {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: antiquewhite;
+  background-color: #222;
+  transition: 0.3s ease;
+}
+#navbar li a:hover,
+#navbar li a.active,
+#navbar li button:hover {
+  color: antiquewhite;
+}
+#navbar li a.active::after,
+#navbar li a:hover::after,
+#navbar li button:hover::after {
+  content: "";
+  width: 30%;
+  height: 2px;
+  background-color: antiquewhite;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+}
+footer .logo{
+  margin-bottom: 30px;
+}

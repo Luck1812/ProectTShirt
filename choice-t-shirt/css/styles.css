@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+body {
+  margin: 0;
+ font-family: 'Lobster', cursive;
+ background-color: whitesmoke;
+}
+.div {
+  display: block;
+}
+img {
+    pointer-events: none;
+  }
+/* app */
+#app {
+  margin: auto;
+}
+/* auxiliary-menu */
+#auxiliary-menu{
+  margin-top: 30px;
+  margin-left: 250px;
+  display: flex;
+}
+.form-select{
+  width: 200px;
+  height: 30px;
+  font-family: 'Abril Fatface', cursive !important; 
+  font-size: 18px;
+}
+.cancel-button{
+  margin-left: 5px;
+  background: url('../pictures/cancel.png');
+  width: 25px;
+  border: none;
+  background-size: cover;
+  height: 25px;
+  padding: 0px;
+  vertical-align: middle;
+  cursor: pointer;
+  align-items:flex-end;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sort-box{
+  margin-left: 50px;
+  font-family: 'Abril Fatface', cursive !important; 
+}
+.sort-button{
+  margin-left: 5px;
+  width: 25px;
+  border: none;
+  background-color: whitesmoke;
+  height: 25px;
+  padding: 0px;
+  vertical-align: middle;
+  cursor: pointer;
+  align-items:flex-end;
+}
+/* container */
+.container {
+  max-width: 1519px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.container-for-list{
+  max-width: 1519px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#list-item {
+    
+  align-content: center;
+padding-bottom: 10px;
+  background-color: antiquewhite;
+  margin-right: 50px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+#img-top-clothes img {
+  width: 500px;
+  height: 400px;
+}
+.name-image {
+  font-size: 30px;
+  margin-block-start: 0;
+  text-align: center;
+}
+.description-image {
+  font-size: 18px;
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Abril Fatface', cursive; 
+  
+}
+.btn-select-clothes {
+  width: 150px;
+  height: 50px;
+  border-color: black;
+  border-style: solid;
+  background-color: #fff;
+  border-radius: 15px;
+  border-width: 2px;
+  font-size: 26px;
+  line-height: 50px;
+  border-style: solid;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn-select-clothes:hover {
+    background-color: rgba(250, 235, 215, 0.149);
+  }
