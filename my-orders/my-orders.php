@@ -220,9 +220,10 @@
                 }
                 let result2 = await flow(this.NumberElectronicReceipt, this.DateOrder, this.PostalCode, this.ArticleTShirt,
                     this.NameProduct, this.CostProduct, this.CountProduct, this.ArticleSketch, this.NameSketch, this.TotalCost);
-                window.location.href = "../chequeOrder.docx";
+                    window.location.href = "../chequeOrder.docx";
             },
             openMoreInformation: function(event) {
+                console.log(this.mainArrayOrders[event.currentTarget.id]);
                 this.isActiveInformationWindow = true;
                 this.NumberElectronicReceipt = this.mainArrayOrders[event.currentTarget.id]['NumberElectronicReceipt'];
                 this.DateOrder = this.mainArrayOrders[event.currentTarget.id]['Date'];
@@ -234,6 +235,7 @@
                 this.CountProduct = 1;
                 this.NameSketch = this.mainArrayOrders[event.currentTarget.id]['NameSketch'];
                 this.TotalCost = Number(this.CostProduct) + 500;
+
             },
             startOrders() {
                 <?php
@@ -270,6 +272,7 @@
                 ?>
                 this.mainArrayOrders = '<?php echo json_encode($array3); ?>';
                 this.mainArrayOrders = $.parseJSON(this.mainArrayOrders);
+                console.log(this.mainArrayOrders);
                 <?php
                 $connection = mysqli_connect('localhost', 'root', '', 'tshirt');
                 $result = $connection->query("SELECT * FROM `status`");
